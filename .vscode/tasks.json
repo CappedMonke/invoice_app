@@ -3,6 +3,18 @@
 	"tasks": [
 		{
 			"type": "cmake",
+			"label": "configure_debug",
+			"command": "configure",
+			"preset": "debug"
+		},
+		{
+			"type": "cmake",
+			"label": "configure_release",
+			"command": "configure",
+			"preset": "release"
+		},
+		{
+			"type": "cmake",
 			"label": "build_debug",
 			"command": "build",
 			"preset": "debug",

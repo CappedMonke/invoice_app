@@ -1,0 +1,5 @@
+---
+IndentWidth: 4
+AccessModifierOffset: -4
+IndentPPDirectives: BeforeHash
+SortIncludes: CaseInsensitive

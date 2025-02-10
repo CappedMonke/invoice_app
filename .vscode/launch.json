@@ -4,7 +4,7 @@
             "type": "lldb",
             "request": "launch",
             "name": "debug",
-            "program": "${workspaceFolder}/build/debug/project_name",
+            "program": "${workspaceFolder}/build/debug/bin/invoice_app",
             "cwd": "${workspaceFolder}",
             "preLaunchTask": "build_debug"
         }
