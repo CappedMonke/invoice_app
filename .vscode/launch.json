@@ -1,0 +1,12 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "debug",
+            "program": "${workspaceFolder}/build/debug/project_name",
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "build_debug"
+        }
+    ]
+}
