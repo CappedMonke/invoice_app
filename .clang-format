@@ -4,4 +4,4 @@ AccessModifierOffset: -4
 ColumnLimit: 0
 IndentPPDirectives: BeforeHash
 SortIncludes: CaseInsensitive
-PointerAlignment: Left
+PointerAlignment: Right

@@ -2,8 +2,8 @@ add_executable(${PROJECT_NAME})
 
 set(SOURCES
     main.cpp
-    gui/window_manager.cpp
-    gui/window.cpp
+    core/window_manager.cpp
+    core/event_manager.cpp
 )
 target_sources(${PROJECT_NAME} PRIVATE ${SOURCES})
 
