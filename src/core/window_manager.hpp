@@ -7,7 +7,10 @@ class Window_manager {
 public:
     static Window_manager &get_instance();
 
-    SDL_Window *create_window(const char *title, int w, int h, SDL_WindowFlags flags);
+    void start_up();
+    void shut_down();
+
+    void create_window(const char *title, int w, int h, SDL_WindowFlags flags);
     void close_window(SDL_Window *window);
     void close_window_by_id(uint32_t window_id);
     void close_all_windows();

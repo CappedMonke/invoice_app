@@ -1,8 +1,8 @@
-#include "event_manager.h"
+#include "event_manager.hpp"
 
 #include <algorithm>
 
-#include "window_manager.h"
+#include "window_manager.hpp"
 
 Event_manager &Event_manager::get_instance() {
     static Event_manager instance;
