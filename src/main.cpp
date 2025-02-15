@@ -22,7 +22,12 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char **argv) {
 }
 
 SDL_AppResult SDL_AppIterate(void *appstate) {
-    window_manager.update();
+    static uint64_t last_time;
+    uint64_t current_time = SDL_GetTicks();
+    float delta_time = (current_time - last_time) / 1000.0;
+    last_time = current_time;
+
+    window_manager.update(delta_time);
 
     return SDL_APP_CONTINUE;
 }

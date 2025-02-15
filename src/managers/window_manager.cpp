@@ -2,8 +2,8 @@
 
 #include <SDL3/SDL.h>
 
-#include "gui/test_layout.hpp"
 #include "gui/window.hpp"
+#include "views/main_view.hpp"
 
 Window_manager &Window_manager::get_instance() {
     static Window_manager instance;
@@ -11,11 +11,17 @@ Window_manager &Window_manager::get_instance() {
 }
 
 void Window_manager::start_up() {
-    open_window("Window 1", 800, 600, SDL_WINDOW_RESIZABLE, new Test_layout);
+    open_window("Window 1", 800, 600, SDL_WINDOW_RESIZABLE, create_main_view(800.0, 600.0));
 }
 
 void Window_manager::shut_down() {
     close_all_windows();
+}
+
+void Window_manager::update(float delta_time) {
+    if (active_window_id != 0) {
+        windows[active_window_id]->update(delta_time);
+    }
 }
 
 void Window_manager::handle_event(const SDL_Event *event) {
@@ -32,20 +38,14 @@ void Window_manager::handle_event(const SDL_Event *event) {
     }
 }
 
-void Window_manager::update() {
-    if (active_window_id != 0) {
-        windows[active_window_id]->update();
-    }
-}
-
 void Window_manager::close_all_windows() {
     for (auto const &window : windows) {
         close_window_by_id(window.first);
     }
 }
 
-void Window_manager::open_window(const char *title, int w, int h, uint32_t flags, Layout *layout) {
-    Window *window = new Window(title, w, h, flags, layout);
+void Window_manager::open_window(const char *title, int w, int h, uint32_t flags, Ui_element *view) {
+    Window *window = new Window(title, w, h, flags, view);
     uint32_t window_id = window->get_id();
     windows[window_id] = window;
     active_window_id = window_id;

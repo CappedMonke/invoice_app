@@ -1,8 +1,5 @@
 #include "button.hpp"
 
-void Button::update() {
-}
-
 void Button::render(SDL_Renderer *renderer) {
     SDL_SetRenderDrawColor(renderer, color_current.r, color_current.g, color_current.b, color_current.a);
     SDL_FRect rect = {pos.x, pos.y, size.x, size.y};
@@ -49,7 +46,7 @@ void Button::on_mouse_enter() {
 }
 
 void Button::on_mouse_exit() {
-    color_current = is_pressed ? color_pressed : color_default;
+    color_current = color_default;
 }
 
 void Button::on_release() {

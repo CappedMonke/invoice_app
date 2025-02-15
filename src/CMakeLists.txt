@@ -1,10 +1,11 @@
 add_executable(${PROJECT_NAME})
 
 set(SOURCES
-    main.cpp
+    gui/button.cpp
+    gui/container.cpp
+    gui/ui_element.cpp
     gui/window.cpp
-    gui/layout.cpp
-    gui/test_layout.cpp
+    main.cpp
     managers/database_manager.cpp
     managers/window_manager.cpp
     models/customer.cpp
