@@ -4,7 +4,6 @@
 
 class Ui_component {
 public:
-    Ui_component() = default;
     virtual ~Ui_component() = default;
 
     virtual void render(SDL_Renderer *renderer) = 0;

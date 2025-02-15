@@ -7,13 +7,16 @@
 
 class Window {
 public:
-    Window(const char *title = "Window", int width = 1280 / 2, int height = 1024 / 2, uint32_t flags = SDL_WINDOW_RESIZABLE);
+    Window(const char *title = "Window", int w = 1280 / 2, int h = 1024 / 2, uint32_t flags = SDL_WINDOW_RESIZABLE);
     virtual ~Window();
 
-    virtual void update();
-    virtual void handle_event(const SDL_Event *event);
+    void render();
+    void handle_event(const SDL_Event *event);
 
     uint32_t get_id();
+
+protected:
+    std::vector<Ui_component *> ui_components;
 
 private:
     uint32_t id;
@@ -24,6 +27,4 @@ private:
 
     SDL_Window *window;
     SDL_Renderer *renderer;
-
-    std::vector<Ui_component *> ui_components;
 };

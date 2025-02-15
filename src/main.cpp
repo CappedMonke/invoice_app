@@ -22,10 +22,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char **argv) {
 }
 
 SDL_AppResult SDL_AppIterate(void *appstate) {
-    {
-        PROFILE("window_manager.update()");
-        window_manager.update();
-    }
+    window_manager.update();
 
     return SDL_APP_CONTINUE;
 }

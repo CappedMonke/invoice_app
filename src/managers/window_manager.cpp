@@ -2,6 +2,7 @@
 
 #include <SDL3/SDL.h>
 
+#include "gui/main_window.hpp"
 #include "gui/window.hpp"
 
 Window_manager &Window_manager::get_instance() {
@@ -10,7 +11,7 @@ Window_manager &Window_manager::get_instance() {
 }
 
 void Window_manager::start_up() {
-    open_window<Window>();
+    open_window<Main_window>();
 }
 
 void Window_manager::shut_down() {
@@ -33,7 +34,7 @@ void Window_manager::handle_event(const SDL_Event *event) {
 
 void Window_manager::update() {
     if (active_window_id != 0) {
-        windows[active_window_id]->update();
+        windows[active_window_id]->render();
     }
 }
 
