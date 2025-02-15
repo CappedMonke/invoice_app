@@ -1,6 +1,6 @@
 #include "invoice.hpp"
 
-#include "core/database_manager.hpp"
+#include "managers/database_manager.hpp"
 
 Invoice::Invoice(int id, int customer_id, const std::string &date, double total_amount)
     : id(id), customer_id(customer_id), date(date), total_amount(total_amount) {}

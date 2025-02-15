@@ -1,13 +1,16 @@
 add_executable(${PROJECT_NAME})
+
 set(SOURCES
     main.cpp
-    core/window_manager.cpp
-    core/event_manager.cpp
-    core/database_manager.cpp
+    gui/window.cpp
+    managers/database_manager.cpp
+    managers/window_manager.cpp
     models/customer.cpp
     models/invoice.cpp
     models/invoice_item.cpp
+    utils/profiler.cpp
 )
+
 target_sources(${PROJECT_NAME} PRIVATE ${SOURCES})
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})

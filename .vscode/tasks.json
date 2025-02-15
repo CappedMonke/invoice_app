@@ -19,6 +19,9 @@
 			"command": "build",
 			"preset": "debug",
 			"group": "build",
+			"problemMatcher": [
+				"$gcc"
+			]
 		},
 		{
 			"type": "cmake",

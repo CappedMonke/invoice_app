@@ -11,11 +11,12 @@ public:
     void start_up();
     void shut_down();
 
-    void initialize_database(const char *path);
-    bool open_database(const char *path);
+    void open_database(const std::string &path);
+    void initialize_database();
     void close_database();
-    bool execute_query(const char *query);
-    std::vector<std::vector<const char *>> fetch_query(const char *query, int column_count);
+
+    bool execute_query(const std::string &query);
+    std::vector<std::vector<std::string>> fetch_query(const std::string &query, int column_count);
 
 private:
     sqlite3 *db = nullptr;

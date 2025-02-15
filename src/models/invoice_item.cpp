@@ -1,6 +1,6 @@
 #include "invoice_item.hpp"
 
-#include "core/database_manager.hpp"
+#include "managers/database_manager.hpp"
 
 Invoice_item::Invoice_item(int id, int invoice_id, const std::string &date, const std::string &service, double price)
     : id(id), invoice_id(invoice_id), date(date), service(service), price(price) {}

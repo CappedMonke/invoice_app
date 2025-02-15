@@ -1,6 +1,6 @@
 #include "customer.hpp"
 
-#include "core/database_manager.hpp"
+#include "managers/database_manager.hpp"
 
 Customer::Customer(int id, const std::string &name, const std::string &street_name, const std::string &house_number,
                    const std::string &city, const std::string &zip_code, const std::string &phone_number,
