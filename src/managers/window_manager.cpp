@@ -2,7 +2,7 @@
 
 #include <SDL3/SDL.h>
 
-#include "gui/main_window.hpp"
+#include "gui/test_layout.hpp"
 #include "gui/window.hpp"
 
 Window_manager &Window_manager::get_instance() {
@@ -11,7 +11,7 @@ Window_manager &Window_manager::get_instance() {
 }
 
 void Window_manager::start_up() {
-    open_window<Main_window>();
+    open_window("Window 1", 800, 600, SDL_WINDOW_RESIZABLE, new Test_layout);
 }
 
 void Window_manager::shut_down() {
@@ -34,7 +34,7 @@ void Window_manager::handle_event(const SDL_Event *event) {
 
 void Window_manager::update() {
     if (active_window_id != 0) {
-        windows[active_window_id]->render();
+        windows[active_window_id]->update();
     }
 }
 
@@ -44,16 +44,11 @@ void Window_manager::close_all_windows() {
     }
 }
 
-template <typename Window_class>
-void Window_manager::open_window() {
-    Window *window = new Window_class();
+void Window_manager::open_window(const char *title, int w, int h, uint32_t flags, Layout *layout) {
+    Window *window = new Window(title, w, h, flags, layout);
     uint32_t window_id = window->get_id();
     windows[window_id] = window;
     active_window_id = window_id;
-}
-
-void Window_manager::close_window(Window *window) {
-    close_window_by_id(window->get_id());
 }
 
 void Window_manager::close_window_by_id(uint32_t window_id) {

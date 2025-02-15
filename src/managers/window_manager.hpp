@@ -7,6 +7,7 @@ union SDL_Event;
 class SDL_Window;
 class SDL_Renderer;
 class Window;
+class Layout;
 
 class Window_manager {
 public:
@@ -17,10 +18,7 @@ public:
     void update();
     void handle_event(const SDL_Event *event);
 
-    template <typename Window_class>
-    void open_window();
-
-    void close_window(Window *window);
+    void open_window(const char *title, int w, int h, uint32_t flags, Layout *layout);
     void close_window_by_id(uint32_t window_id);
     void close_all_windows();
 

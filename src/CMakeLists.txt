@@ -3,8 +3,8 @@ add_executable(${PROJECT_NAME})
 set(SOURCES
     main.cpp
     gui/window.cpp
-    gui/main_window.cpp
-    gui/button.cpp
+    gui/layout.cpp
+    gui/test_layout.cpp
     managers/database_manager.cpp
     managers/window_manager.cpp
     models/customer.cpp

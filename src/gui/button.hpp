@@ -1,24 +1,23 @@
 #pragma once
 
-#include "ui_component.hpp"
+#include "ui_element.hpp"
 
-class Button : public Ui_component {
+#include <string>
+
+class Button : public Ui_element {
 public:
-    Button(float x, float y, float w, float h, Uint8 r, Uint8 g, Uint8 b, Uint8 a);
+    virtual void update() override;
+    virtual void render(SDL_Renderer *renderer) override;
+    virtual void handle_event(const SDL_Event *event) override;
 
-    virtual void render(SDL_Renderer *renderer);
-    virtual void handle_event(const SDL_Event *event);
-
-protected:
-    virtual void activate();
+    std::function<void()> on_execute_callback;
 
 private:
-    float x, y, w, h;
-    Uint8 r, g, b, a;
-    bool is_hovered = false;
-    bool is_down = false;
+    bool is_pressed = false;
+    bool was_mouse_inside = false;
 
-    void hover();
-    void down();
-    void release();
+    void on_press();
+    void on_mouse_enter();
+    void on_mouse_exit();
+    void on_release();
 };
