@@ -4,7 +4,7 @@ void Button::update() {
 }
 
 void Button::render(SDL_Renderer *renderer) {
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_SetRenderDrawColor(renderer, color_current.r, color_current.g, color_current.b, color_current.a);
     SDL_FRect rect = {pos.x, pos.y, size.x, size.y};
     SDL_RenderFillRect(renderer, &rect);
 }
@@ -26,8 +26,8 @@ void Button::handle_event(const SDL_Event *event) {
             is_pressed = true;
         }
     } else if (event->type == SDL_EVENT_MOUSE_BUTTON_UP && event->button.button == SDL_BUTTON_LEFT) {
-        if (was_mouse_inside) {
-            if (is_pressed) {
+        if (is_pressed) {
+            if (was_mouse_inside) {
                 if (on_execute_callback) {
                     on_execute_callback();
                 } else {
@@ -41,13 +41,17 @@ void Button::handle_event(const SDL_Event *event) {
 }
 
 void Button::on_press() {
+    color_current = color_pressed;
 }
 
 void Button::on_mouse_enter() {
+    color_current = is_pressed ? color_pressed : color_hover;
 }
 
 void Button::on_mouse_exit() {
+    color_current = is_pressed ? color_pressed : color_default;
 }
 
 void Button::on_release() {
+    color_current = was_mouse_inside ? color_hover : color_default;
 }

@@ -23,3 +23,7 @@ void Layout::handle_event(const SDL_Event *event) {
         element->handle_event(event);
     }
 }
+
+void Layout::add_element(Ui_element *element) {
+    elements.push_back(element);
+}

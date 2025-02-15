@@ -12,6 +12,7 @@ public:
     virtual void handle_event(const SDL_Event *event) = 0;
 
     bool is_visible = true;
+
     glm::vec2 pos = {0, 0};
     glm::vec2 size = {100, 100};
 };
