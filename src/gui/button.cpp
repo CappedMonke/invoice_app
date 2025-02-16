@@ -8,7 +8,7 @@ void Button::render(SDL_Renderer *renderer) {
 
 void Button::handle_event(const SDL_Event *event) {
     if (event->type == SDL_EVENT_MOUSE_MOTION) {
-        bool is_mouse_inside = event->motion.x >= pos.x && event->motion.x <= pos.x + size.x && event->motion.y >= pos.y && event->motion.y <= pos.y + size.y;
+        bool is_mouse_inside = event->motion.x >= pos.x && event->motion.x < pos.x + size.x && event->motion.y >= pos.y && event->motion.y < pos.y + size.y;
         if (!was_mouse_inside && is_mouse_inside) {
             on_mouse_enter();
         } else if (was_mouse_inside && !is_mouse_inside) {

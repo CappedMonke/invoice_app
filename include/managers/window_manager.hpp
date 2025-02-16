@@ -1,6 +1,0 @@
-class Window_manager {
-public:
-    // ...existing code...
-    void update(double delta_time);
-    // ...existing code...
-};

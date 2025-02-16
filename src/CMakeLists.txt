@@ -2,7 +2,7 @@ add_executable(${PROJECT_NAME})
 
 set(SOURCES
     gui/button.cpp
-    gui/container.cpp
+    gui/containers.cpp
     gui/ui_element.cpp
     gui/window.cpp
     main.cpp

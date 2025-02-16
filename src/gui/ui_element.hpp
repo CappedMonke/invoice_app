@@ -6,12 +6,13 @@
 
 class Ui_element {
 public:
-    virtual ~Ui_element() = default;
+    virtual ~Ui_element();
 
     virtual void update(float delta_time);
     virtual void render(SDL_Renderer *renderer);
     virtual void handle_event(const SDL_Event *event);
     virtual void add_element(Ui_element *element);
+    void remove_element(Ui_element *element);
 
     bool is_visible = true;
 
