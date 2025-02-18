@@ -4,7 +4,6 @@
 
 #include "managers/database_manager.hpp"
 #include "managers/window_manager.hpp"
-#include "utils/profiler.hpp"
 
 Database_manager &database_manager = Database_manager::get_instance();
 Window_manager &window_manager = Window_manager::get_instance();

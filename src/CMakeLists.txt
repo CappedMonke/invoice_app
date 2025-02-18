@@ -1,9 +1,6 @@
 add_executable(${PROJECT_NAME})
 
 set(SOURCES
-    gui/button.cpp
-    gui/containers.cpp
-    gui/ui_element.cpp
     gui/window.cpp
     main.cpp
     managers/database_manager.cpp

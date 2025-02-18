@@ -3,7 +3,6 @@
 #include <SDL3/SDL.h>
 
 #include "gui/window.hpp"
-#include "views/main_view.hpp"
 
 Window_manager &Window_manager::get_instance() {
     static Window_manager instance;
@@ -11,7 +10,7 @@ Window_manager &Window_manager::get_instance() {
 }
 
 void Window_manager::start_up() {
-    open_window("Window 1", 800, 600, SDL_WINDOW_RESIZABLE, create_main_view(800.0, 600.0));
+    open_window("Window 1", 800, 600, SDL_WINDOW_RESIZABLE);
 }
 
 void Window_manager::shut_down() {
