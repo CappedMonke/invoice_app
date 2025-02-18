@@ -18,7 +18,7 @@ public:
     void update(float delta_time);
     void handle_event(const SDL_Event *event);
 
-    void open_window(const char *title, int w, int h, uint32_t flags, Ui_element *view);
+    void open_window(const char *title, int w, int h, uint32_t flags);
     void close_window_by_id(uint32_t window_id);
     void close_all_windows();
 

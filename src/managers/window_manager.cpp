@@ -43,8 +43,8 @@ void Window_manager::close_all_windows() {
     }
 }
 
-void Window_manager::open_window(const char *title, int w, int h, uint32_t flags, Ui_element *view) {
-    Window *window = new Window(title, w, h, flags, view);
+void Window_manager::open_window(const char *title, int w, int h, uint32_t flags) {
+    Window *window = new Window(title, w, h, flags);
     uint32_t window_id = window->get_id();
     windows[window_id] = window;
     active_window_id = window_id;
