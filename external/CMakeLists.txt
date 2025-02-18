@@ -1,7 +1,7 @@
 
 add_library(external INTERFACE)
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/clay)
+target_include_directories(external INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/clay)
 
 add_subdirectory(glm)
 target_link_libraries(external INTERFACE glm::glm)

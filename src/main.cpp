@@ -1,6 +1,7 @@
 #define SDL_MAIN_USE_CALLBACKS
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
+#include <SDL3_ttf/SDL_ttf.h>
 
 #include "managers/database_manager.hpp"
 #include "managers/window_manager.hpp"
@@ -11,6 +12,11 @@ Window_manager &window_manager = Window_manager::get_instance();
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char **argv) {
     if (!SDL_InitSubSystem(SDL_INIT_VIDEO)) {
         SDL_Log("Failed to initialize SDL: %s", SDL_GetError());
+        return SDL_APP_FAILURE;
+    }
+
+    if (!TTF_Init()) {
+        SDL_Log("Failed to initialize SDL_ttf: %s", SDL_GetError());
         return SDL_APP_FAILURE;
     }
 
@@ -44,4 +50,5 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event) {
 void SDL_AppQuit(void *appstate, SDL_AppResult result) {
     window_manager.shut_down();
     database_manager.shut_down();
+    TTF_Quit();
 }

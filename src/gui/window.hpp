@@ -3,6 +3,11 @@
 #include <SDL3/SDL.h>
 #include <vector>
 
+#define CLAY_IMPLEMENTATION
+#include <clay.h>
+#include <examples/shared-layouts/clay-video-demo.c>
+#include <renderers/SDL3/clay_renderer_SDL3.c>
+
 class Window {
 public:
     Window(const char *title, int w, int h, uint32_t flags);
@@ -15,5 +20,6 @@ public:
 
 private:
     SDL_Window *window;
-    SDL_Renderer *renderer;
+    Clay_SDL3RendererData renderer_data;
+    ClayVideoDemo_Data demo_data;
 };
