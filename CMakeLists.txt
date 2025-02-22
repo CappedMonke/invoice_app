@@ -31,6 +31,7 @@ set(SOURCES
     src/gui/window.cpp
     src/gui/containers.cpp
     src/gui/ui_element.cpp
+    src/gui/panel.cpp
     src/main.cpp
     src/managers/database_manager.cpp
     src/managers/window_manager.cpp

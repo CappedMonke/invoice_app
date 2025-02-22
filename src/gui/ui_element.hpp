@@ -15,6 +15,11 @@ public:
     virtual void add_child(Ui_element *child);
     virtual void remove_child(Ui_element *child);
 
+    void set_size_to_min_size();
+
+    bool expand_x = true;
+    bool expand_y = true;
+
     glm::vec2 position = {0, 0};
     glm::vec2 size = {0, 0};
     glm::vec2 min_size = {0, 0};
