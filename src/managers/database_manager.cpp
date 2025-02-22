@@ -8,7 +8,7 @@ Database_manager &Database_manager::get_instance() {
 }
 
 void Database_manager::start_up() {
-    open_database("data/database.db");
+    open_database("database.db");
     initialize_database();
 }
 

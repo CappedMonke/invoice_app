@@ -12,15 +12,13 @@ Window_manager &window_manager = Window_manager::get_instance();
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char **argv) {
     if (!SDL_InitSubSystem(SDL_INIT_VIDEO)) {
         SDL_Log("Failed to initialize SDL: %s", SDL_GetError());
-        return SDL_APP_FAILURE;
     }
 
-    if (!TTF_Init()) {
-        SDL_Log("Failed to initialize SDL_ttf: %s", SDL_GetError());
-        return SDL_APP_FAILURE;
-    }
+    // if (!TTF_Init()) {
+    //     SDL_Log("Failed to initialize SDL_ttf: %s", SDL_GetError());
+    // }
 
-    database_manager.start_up();
+    // database_manager.start_up();
     window_manager.start_up();
 
     return SDL_APP_CONTINUE;
@@ -49,6 +47,6 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event) {
 
 void SDL_AppQuit(void *appstate, SDL_AppResult result) {
     window_manager.shut_down();
-    database_manager.shut_down();
-    TTF_Quit();
+    // database_manager.shut_down();
+    // TTF_Quit();
 }

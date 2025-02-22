@@ -2,6 +2,7 @@
 
 #include <SDL3/SDL.h>
 
+#include "gui/views/main_view.hpp"
 #include "gui/window.hpp"
 
 Window_manager &Window_manager::get_instance() {
@@ -10,7 +11,7 @@ Window_manager &Window_manager::get_instance() {
 }
 
 void Window_manager::start_up() {
-    open_window("Window 1", 800, 600, SDL_WINDOW_RESIZABLE);
+    open_window("Rechnungen", 1200 * 0.8, 1024 * 0.8, SDL_WINDOW_RESIZABLE, create_main_view());
 }
 
 void Window_manager::shut_down() {
@@ -37,14 +38,9 @@ void Window_manager::handle_event(const SDL_Event *event) {
     }
 }
 
-void Window_manager::close_all_windows() {
-    for (auto const &window : windows) {
-        close_window_by_id(window.first);
-    }
-}
-
-void Window_manager::open_window(const char *title, int w, int h, uint32_t flags) {
-    Window *window = new Window(title, w, h, flags);
+void Window_manager::open_window(const char *title, int w, int h, uint32_t flags, Container *view) {
+    Window *window = new Window(title, w, h, flags, view);
+    view->min_size = {w, h};
     uint32_t window_id = window->get_id();
     windows[window_id] = window;
     active_window_id = window_id;
@@ -54,4 +50,10 @@ void Window_manager::close_window_by_id(uint32_t window_id) {
     delete windows[window_id];
     windows.erase(window_id);
     active_window_id = 0;
+}
+
+void Window_manager::close_all_windows() {
+    for (auto const &window : windows) {
+        close_window_by_id(window.first);
+    }
 }
