@@ -15,14 +15,17 @@ public:
     virtual void add_child(Ui_element *child);
     virtual void remove_child(Ui_element *child);
 
-    void set_size_to_min_size();
+    virtual void compute_size();
+    virtual void compute_layout();
 
-    bool expand_x = true;
-    bool expand_y = true;
+    bool expand_x = false;
+    bool expand_y = false;
+    float proportion = 1;
 
     glm::vec2 position = {0, 0};
     glm::vec2 size = {0, 0};
     glm::vec2 min_size = {0, 0};
+    glm::vec2 render_offset = {0, 0};
 
 protected:
     Ui_element *parent = nullptr;

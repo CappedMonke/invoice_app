@@ -2,7 +2,7 @@
 
 #include "utils/profiler.hpp"
 
-Window::Window(const char *title, int w, int h, uint32_t flags, Container *view)
+Window::Window(const char *title, int w, int h, uint32_t flags, Ui_element *view)
     : view(view) {
     window = SDL_CreateWindow(title, w, h, flags);
     if (window == nullptr) {
@@ -27,10 +27,14 @@ Window::~Window() {
 }
 
 void Window::update(float delta_time) {
-    PROFILE("view->update");
+    PROFILE("layouting");
+    view->compute_size();
+    view->compute_layout();
+
+    PROFILE_LAP("updating");
     view->update(delta_time);
 
-    PROFILE_LAP("view->render");
+    PROFILE_LAP("rendering");
     SDL_SetRenderDrawColor(renderer, 30, 30, 30, 255);
     SDL_RenderClear(renderer);
     view->render(renderer);

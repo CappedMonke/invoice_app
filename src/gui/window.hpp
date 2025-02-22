@@ -3,11 +3,11 @@
 #include <SDL3/SDL.h>
 #include <vector>
 
-#include "containers.hpp"
+#include "ui_element.hpp"
 
 class Window {
 public:
-    Window(const char *title, int w, int h, uint32_t flags, Container *view);
+    Window(const char *title, int w, int h, uint32_t flags, Ui_element *view);
     ~Window();
 
     void update(float delta_time);
@@ -18,5 +18,5 @@ public:
 private:
     SDL_Window *window;
     SDL_Renderer *renderer;
-    Container *view;
+    Ui_element *view;
 };

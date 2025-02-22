@@ -38,7 +38,7 @@ void Window_manager::handle_event(const SDL_Event *event) {
     }
 }
 
-void Window_manager::open_window(const char *title, int w, int h, uint32_t flags, Container *view) {
+void Window_manager::open_window(const char *title, int w, int h, uint32_t flags, Ui_element *view) {
     Window *window = new Window(title, w, h, flags, view);
     view->min_size = {w, h};
     uint32_t window_id = window->get_id();

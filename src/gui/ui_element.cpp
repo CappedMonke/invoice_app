@@ -12,8 +12,6 @@ void Ui_element::update(float delta_time) {
     for (auto child : children) {
         child->update(delta_time);
     }
-
-    set_size_to_min_size();
 }
 
 void Ui_element::handle_event(const SDL_Event *event) {
@@ -41,11 +39,16 @@ void Ui_element::remove_child(Ui_element *child) {
     }
 }
 
-void Ui_element::set_size_to_min_size() {
-    if (size.x < min_size.x) {
-        size.x = min_size.x;
+void Ui_element::compute_size() {
+    for (auto child : children) {
+        child->compute_size();
     }
-    if (size.y < min_size.y) {
-        size.y = min_size.y;
+
+    size = min_size;
+}
+
+void Ui_element::compute_layout() {
+    for (auto child : children) {
+        child->compute_layout();
     }
 }

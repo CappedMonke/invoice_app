@@ -3,67 +3,37 @@
 #include "gui/containers.hpp"
 #include "gui/panel.hpp"
 
-Container *create_main_view() {
-    Container *root = new Vertical_container;
+Ui_element *create_menu_bar() {
+    Ui_element *menu_bar = new Horizontal_container;
+    menu_bar->expand_x = true;
+    menu_bar->min_size.y = 24;
 
-    Horizontal_container *menu_bar = new Horizontal_container;
-    menu_bar->min_size = {100, 100};
-    menu_bar->expand_y = false;
-    root->add_child(menu_bar);
+    return menu_bar;
+}
 
-    Panel *panel = new Panel;
-    panel->min_size = {100, 100};
-    panel->color = Color::purple_4;
-    menu_bar->add_child(panel);
+Ui_element *create_content() {
+    Ui_element *content = new Horizontal_container;
+    content->expand_x = true;
+    content->expand_y = true;
 
-    Panel *panel_2 = new Panel;
-    panel_2->min_size = {100, 100};
-    panel_2->color = Color::blue_4;
-    menu_bar->add_child(panel_2);
+    return content;
+}
 
-    Panel *panel_3 = new Panel;
-    panel_3->min_size = {100, 100};
-    panel_3->color = Color::orange_4;
-    menu_bar->add_child(panel_3);
+Ui_element *create_footer() {
+    Ui_element *footer = new Horizontal_container;
+    footer->expand_x = true;
+    footer->min_size.y = 24;
 
-    Vertical_container *content = new Vertical_container;
-    content->min_size = {100, 100};
-    root->add_child(content);
+    return footer;
+}
 
-    Panel *panel_4 = new Panel;
-    panel_4->min_size = {100, 100};
-    panel_4->color = Color::purple_4;
-    content->add_child(panel_4);
+Ui_element *create_main_view() {
+    Ui_element *root = new Vertical_container;
+    root->expand_x = false;
 
-    Panel *panel_5 = new Panel;
-    panel_5->min_size = {100, 100};
-    panel_5->color = Color::blue_4;
-    content->add_child(panel_5);
-
-    Panel *panel_6 = new Panel;
-    panel_6->min_size = {100, 100};
-    panel_6->color = Color::orange_4;
-    content->add_child(panel_6);
-
-    Horizontal_container *footer = new Horizontal_container;
-    footer->min_size = {100, 100};
-    menu_bar->expand_y = false;
-    root->add_child(footer);
-
-    Panel *panel_7 = new Panel;
-    panel_7->min_size = {100, 100};
-    panel_7->color = Color::purple_4;
-    footer->add_child(panel_7);
-
-    Panel *panel_8 = new Panel;
-    panel_8->min_size = {100, 100};
-    panel_8->color = Color::blue_4;
-    footer->add_child(panel_8);
-
-    Panel *panel_9 = new Panel;
-    panel_9->min_size = {100, 100};
-    panel_9->color = Color::orange_4;
-    footer->add_child(panel_9);
+    root->add_child(create_menu_bar());
+    root->add_child(create_content());
+    root->add_child(create_footer());
 
     return root;
 }
