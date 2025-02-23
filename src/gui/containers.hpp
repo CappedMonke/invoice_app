@@ -6,7 +6,9 @@ class Container : public Ui_element {
 public:
     virtual void render(SDL_Renderer *renderer) override;
 
-protected:
+    virtual void compute_size() override;
+    virtual void compute_layout() override;
+
     glm::vec4 padding = {0, 0, 0, 0};
     float spacing = 0;
 };

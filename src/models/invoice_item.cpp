@@ -9,20 +9,16 @@ bool Invoice_item::save() {
     Database_manager &db = Database_manager::get_instance();
     std::string query;
     if (id == 0) {
-        query = "INSERT INTO invoice_items (invoice_id, date, service, price) VALUES (" + std::to_string(invoice_id) +
-                ", '" + date + "', '" + service + "', " + std::to_string(price) + ");";
+        query = "INSERT INTO invoice_items (invoice_id, date, service, price) VALUES (" + std::to_string(invoice_id) + ", '" + date + "', '" + service + "', " + std::to_string(price) + ");";
     } else {
-        query = "UPDATE invoice_items SET invoice_id = " + std::to_string(invoice_id) + ", date = '" + date +
-                "', service = '" + service + "', price = " + std::to_string(price) +
-                " WHERE id = " + std::to_string(id) + ";";
+        query = "UPDATE invoice_items SET invoice_id = " + std::to_string(invoice_id) + ", date = '" + date + "', service = '" + service + "', price = " + std::to_string(price) + " WHERE id = " + std::to_string(id) + ";";
     }
     return db.execute_query(query.c_str());
 }
 
 std::vector<Invoice_item> Invoice_item::find_by_invoice_id(int invoice_id) {
     Database_manager &db = Database_manager::get_instance();
-    std::string query = "SELECT id, invoice_id, date, service, price FROM invoice_items WHERE invoice_id = " +
-                        std::to_string(invoice_id) + ";";
+    std::string query = "SELECT id, invoice_id, date, service, price FROM invoice_items WHERE invoice_id = " + std::to_string(invoice_id) + ";";
     auto results = db.fetch_query(query.c_str(), 5);
 
     std::vector<Invoice_item> invoice_items;

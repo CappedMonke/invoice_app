@@ -18,14 +18,13 @@ public:
     virtual void compute_size();
     virtual void compute_layout();
 
-    bool expand_x = false;
-    bool expand_y = false;
+    bool expand_x = true;
+    bool expand_y = true;
     float proportion = 1;
 
     glm::vec2 position = {0, 0};
     glm::vec2 size = {0, 0};
     glm::vec2 min_size = {0, 0};
-    glm::vec2 render_offset = {0, 0};
 
 protected:
     Ui_element *parent = nullptr;

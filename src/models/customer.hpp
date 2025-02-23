@@ -15,9 +15,7 @@ public:
     std::string email;
 
     Customer() = default;
-    Customer(int id, const std::string &name, const std::string &street_name, const std::string &house_number,
-             const std::string &city, const std::string &zip_code, const std::string &phone_number,
-             const std::string &email);
+    Customer(int id, const std::string &name, const std::string &street_name, const std::string &house_number, const std::string &city, const std::string &zip_code, const std::string &phone_number, const std::string &email);
 
     bool save();
     static std::vector<Customer> load_all();

@@ -2,8 +2,8 @@
 
 #include <SDL3/SDL.h>
 
-#include "gui/views/main_view.hpp"
 #include "gui/window.hpp"
+#include "views/main_view.hpp"
 
 Window_manager &Window_manager::get_instance() {
     static Window_manager instance;
